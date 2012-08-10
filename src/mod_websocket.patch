@@ -69,21 +69,21 @@ diff -ur lighttpd-1.4.26.orig/configure.ac lighttpd-1.4.26/configure.ac
 +AC_MSG_CHECKING(whether --with-websocket option specified)
 +AC_ARG_WITH(
 +	websocket,
-+	[  --with-websocket@<:@=IETF-{00,08}@:>@
++	[  --with-websocket@<:@=IETF-{00,08},RFC-6455@:>@
 +				  specify draft version : default=IETF-00],
 +	[ websocket=$withval ],
 +	[ websocket=no ])
 +AC_MSG_RESULT(${websocket})
 +if test "x${websocket}" == "xyes" ||
-+   test "x${websocket}" == "xietf-00" ||
-+   test "x${websocket}" == "xIETF-00"; then
++   test "x${websocket}" == "xietf-00" || test "x${websocket}" == "xIETF-00"; then
 +   websocket="IETF-00"
 +   WEBSOCKET_VERSION_CFLAGS="-D_MOD_WEBSOCKET_SPEC_IETF_00_"
-+elif test "x${websocket}" == "xietf-08" ||
-+     test "x${websocket}" == "xIETF-08"; then
++elif test "x${websocket}" == "xietf-08" || test "x${websocket}" == "xIETF-08"; then
 +   WEBSOCKET_VERSION_CFLAGS="-D_MOD_WEBSOCKET_SPEC_IETF_08_"
++elif test "x${websocket}" == "xrfc-6455" || test "x${websocket}" == "xRFC-6455"; then
++   WEBSOCKET_VERSION_CFLAGS="-D_MOD_WEBSOCKET_SPEC_RFC_6455_"
 +elif test "x${websocket}" != "xno"; then
-+   AC_MSG_ERROR([websocket option is invalid. plz specify IETF-{00,08}])
++   AC_MSG_ERROR([websocket option is invalid. plz specify IETF-{00,08} or RFC-6455])
 +fi
 +AC_SUBST(websocket)
 +AC_SUBST(WEBSOCKET_VERSION_CFLAGS)

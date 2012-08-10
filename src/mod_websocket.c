@@ -37,6 +37,10 @@
 #include "fdevent.h"
 #include "joblist.h"
 
+#ifdef _MOD_WEBSOCKET_SPEC_RFC_6455_
+#define	_MOD_WEBSOCKET_SPEC_IETF_08_
+#endif
+
 #ifdef	_MOD_WEBSOCKET_SPEC_IETF_00_
 # include "md5.h"
 #endif	/* _MOD_WEBSOCKET_SPEC_IETF_00_ */

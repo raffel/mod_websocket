@@ -40,6 +40,10 @@
 #include "base.h"
 #include "plugin.h"
 
+#ifdef _MOD_WEBSOCKET_SPEC_RFC_6455_
+#define _MOD_WEBSOCKET_SPEC_IETF_08_
+#endif
+
 #define	MOD_WEBSOCKET_CONFIG_SERVER						"websocket.server"
 #define	MOD_WEBSOCKET_CONFIG_DEBUG						"websocket.debug"
 #define	MOD_WEBSOCKET_CONFIG_HOST						"host"
@@ -59,7 +63,11 @@
 #define	MOD_WEBSOCKET_CRLF_STR							"\r\n"
 
 #define	MOD_WEBSOCKET_SEC_WEBSOCKET_PROTOCOL_STR		"Sec-WebSocket-Protocol"
+#ifdef _MOD_WEBSOCKET_SPEC_RFC_6455_
+#define	MOD_WEBSOCKET_SEC_WEBSOCKET_ORIGIN_STR			"Origin"
+#else
 #define	MOD_WEBSOCKET_SEC_WEBSOCKET_ORIGIN_STR			"Sec-WebSocket-Origin"
+#endif
 
 #define	MOD_WEBSOCKET_SCHEME_WS							"ws://"
 #define	MOD_WEBSOCKET_SCHEME_WSS						"wss://"
